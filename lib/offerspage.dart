@@ -5,7 +5,10 @@ class OffersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Offer(
+      title: "My great offer",
+      description: "Buy 1 get 10 free!",
+    );
   }
 }
 
@@ -18,6 +21,32 @@ class Offer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SizedBox(
+      height: 150,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Card(
+          color: Colors.amber.shade300,
+          elevation: 7,
+          child: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage("images/background.png")),
+            ),
+            child: Column(
+              children: [
+                Center(
+                    child: Text(title,
+                        style: Theme.of(context).textTheme.headline5)),
+                Center(
+                    child: Text(description,
+                        style: Theme.of(context).textTheme.headline6)),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
