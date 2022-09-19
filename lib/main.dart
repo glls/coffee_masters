@@ -1,5 +1,8 @@
-import 'package:coffee_masters/offerspage.dart';
+import 'package:coffee_masters/pages/offerspage.dart';
 import 'package:flutter/material.dart';
+
+import 'pages/menupage.dart';
+import 'pages/orderpage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,7 +61,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
-      home: MyHomePage(
+      home: const MyHomePage(
         title: '',
       ),
     );
@@ -75,21 +78,48 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
+    Widget currentWidgetPage = Text("Hello World");
+
+    switch (selectedIndex) {
+      case 0:
+        currentWidgetPage = const MenuPage();
+        break;
+      case 1:
+        currentWidgetPage = const OffersPage();
+        break;
+      case 2:
+        currentWidgetPage = const OrderPage();
+        break;
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Image.asset("images/logo.png"),
       ),
-      bottomNavigationBar: BottomNavigationBar(items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.coffee), label: "Menu"),
-        // BottomNavigationBarItem(icon: Icon(Icons.local_cafe), label: "Coffee"),
-        BottomNavigationBarItem(icon: Icon(Icons.local_offer), label: "Offers"),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart), label: "Order"),
-        // BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-      ]),
-      body: const OffersPage(),
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: selectedIndex,
+          onTap: (index) {
+            setState(() {
+              selectedIndex = index;
+            });
+          },
+          backgroundColor: Theme.of(context).primaryColor,
+          selectedItemColor: Colors.yellow.shade400,
+          unselectedItemColor: Colors.brown.shade50,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.coffee), label: "Menu"),
+            // BottomNavigationBarItem(icon: Icon(Icons.local_cafe), label: "Coffee"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.local_offer), label: "Offers"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart), label: "Order"),
+            // BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+          ]),
+      body: currentWidgetPage,
     );
   }
 }
