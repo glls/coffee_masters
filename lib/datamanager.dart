@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import 'datamodel.dart';
 
 class DataManager {
@@ -34,10 +33,3 @@ class DataManager {
     return total;
   }
 }
-=======
-import 'package:coffee_masters/datamodel.dart';
-
-class DataManager {
-  List <Category> 
-}
->>>>>>> 45a496776357f6ab7d76dbd1428be0834def85e0
