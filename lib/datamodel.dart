@@ -24,11 +24,11 @@ class Category {
   });
 }
 
-class ItemCart {
+class ItemInCart {
   Product product;
   int quantity;
 
-  ItemCart({
+  ItemInCart({
     required this.product,
     required this.quantity,
   });

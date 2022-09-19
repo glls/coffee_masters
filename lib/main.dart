@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Widget currentWidgetPage = Text("Hello World");
+    Widget currentWidgetPage = const Text("Hello World");
 
     switch (selectedIndex) {
       case 0:
