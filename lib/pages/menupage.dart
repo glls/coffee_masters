@@ -5,6 +5,7 @@ import '../datamodel.dart';
 
 class MenuPage extends StatelessWidget {
   final DataManager dataManager;
+
   const MenuPage({Key? key, required this.dataManager}) : super(key: key);
 
   @override
@@ -32,7 +33,7 @@ class MenuPage extends StatelessWidget {
                         var product = categories[index].products[prodIndex];
                         return ProductItem(
                             product: product,
-                            onAdd: () {
+                            onAdd: (product) {
                               dataManager.cartAdd(product);
                             });
                       })
