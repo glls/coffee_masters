@@ -15,7 +15,7 @@ class MenuPage extends StatelessWidget {
       builder: ((context, snapshot) {
         if (snapshot.hasData) {
           // The future has finished, data is ready
-          var categories = snapshot.data! as List<Category>;
+          var categories = snapshot.data!;
           return ListView.builder(
             itemCount: categories.length,
             itemBuilder: ((context, index) {
@@ -85,7 +85,7 @@ class ProductItem extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("\$${product.price}"),
+                      child: Text("\$${product.price.toStringAsFixed(2)}"),
                     ),
                   ],
                 ),
