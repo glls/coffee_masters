@@ -3,21 +3,28 @@ import 'package:flutter/material.dart';
 import '../datamanager.dart';
 import '../datamodel.dart';
 
-class OrderPage extends StatelessWidget {
+class OrderPage extends StatefulWidget {
   final DataManager dataManager;
 
   const OrderPage({Key? key, required this.dataManager}) : super(key: key);
 
   @override
+  State<OrderPage> createState() => _OrderPageState();
+}
+
+class _OrderPageState extends State<OrderPage> {
+  @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: dataManager.cart.length,
+      itemCount: widget.dataManager.cart.length,
       itemBuilder: (context, index) {
-        var item = dataManager.cart[index];
+        var item = widget.dataManager.cart[index];
         return OrderItem(
             item: item,
             onRemove: (product) {
-              dataManager.cartRemove(product);
+              setState(() {
+                widget.dataManager.cartRemove(product);
+              });
             });
       },
     );
@@ -27,6 +34,7 @@ class OrderPage extends StatelessWidget {
 class OrderItem extends StatelessWidget {
   final ItemInCart item;
   final Function onRemove;
+
   const OrderItem({Key? key, required this.item, required this.onRemove})
       : super(key: key);
 
@@ -53,8 +61,8 @@ class OrderItem extends StatelessWidget {
                 )),
             Expanded(
                 flex: 20, // width: 20%
-                child: Text("\$" +
-                    (item.product.price * item.quantity).toStringAsFixed(2))),
+                child: Text(
+                    "\$${(item.product.price * item.quantity).toStringAsFixed(2)}")),
             Expanded(
                 flex: 10, // width: 10%
                 child: IconButton(
