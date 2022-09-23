@@ -14,11 +14,9 @@ class DataManager {
     if (response.statusCode == 200) {
       var body = response.body;
       _menu = [];
-      var decodedData = jsonDecode(body) as List<dynamic>;
-
-      for (var json in decodedData) {
-        var category = Category.fromJson(json);
-        _menu!.add(category);
+      var decodeData = jsonDecode(body) as List<dynamic>;
+      for (var json in decodeData) {
+        _menu?.add(Category.fromJson(json));
       }
     }
   }
@@ -36,19 +34,18 @@ class DataManager {
       if (item.product.id == p.id) {
         item.quantity++;
         found = true;
-        break;
       }
-      if (!found) {
-        cart.add(ItemInCart(product: p, quantity: 1));
-      }
+    }
+    if (!found) {
+      cart.add(ItemInCart(product: p, quantity: 1));
     }
   }
 
-  cartRemome(Product p) {
+  cartRemove(Product p) {
     cart.removeWhere((item) => item.product.id == p.id);
   }
 
-  cartCLear() {
+  cartClear() {
     cart.clear();
   }
 

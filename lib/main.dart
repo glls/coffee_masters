@@ -9,50 +9,8 @@ void main() {
   runApp(const MyApp());
 }
 
-class Greet extends StatefulWidget {
-  const Greet({super.key});
-
-  @override
-  State<Greet> createState() => _GreetState();
-}
-
-class _GreetState extends State<Greet> {
-  var name = "";
-  @override
-  Widget build(BuildContext context) {
-    var myStyle = const TextStyle(fontSize: 20);
-    return Column(children: [
-      Row(
-        children: [
-          Text("Hello $name", style: myStyle),
-          Text("!!!", style: myStyle),
-        ],
-      ),
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: TextField(
-          onChanged: (value) {
-            setState(() {
-              name = value;
-            });
-          },
-        ),
-      )
-    ]);
-  }
-}
-
-class HelloWorld extends StatelessWidget {
-  const HelloWorld({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text('Hello World');
-  }
-}
-
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -62,17 +20,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.brown,
       ),
-      home: const MyHomePage(
-        title: '',
-      ),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -88,13 +42,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
     switch (selectedIndex) {
       case 0:
-        currentWidgetPage = MenuPage(dataManager: dataManager);
+        currentWidgetPage = MenuPage(dataManager: dataManager,);
         break;
       case 1:
         currentWidgetPage = const OffersPage();
         break;
       case 2:
-        currentWidgetPage = OrderPage(datamanager: dataManager);
+        currentWidgetPage = OrderPage(
+          dataManager: dataManager,
+        );
         break;
     }
 
@@ -104,9 +60,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectedIndex,
-          onTap: (index) {
+          onTap: (newIndex) {
             setState(() {
-              selectedIndex = index;
+              selectedIndex = newIndex; // changing the state
             });
           },
           backgroundColor: Theme.of(context).primaryColor,
@@ -118,8 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.local_offer), label: "Offers"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart), label: "Order"),
-            // BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+                label: "Order",
+                icon: Icon(Icons.shopping_cart_checkout_outlined)),
           ]),
       body: currentWidgetPage,
     );

@@ -26,7 +26,7 @@ class MenuPage extends StatelessWidget {
                   ),
                   ListView.builder(
                       shrinkWrap: true,
-                      physics: ClampingScrollPhysics(),
+                      physics: const ClampingScrollPhysics(),
                       itemCount: categories[index].products.length,
                       itemBuilder: (context, prodIndex) {
                         var product = categories[index].products[prodIndex];
