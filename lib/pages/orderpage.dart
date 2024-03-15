@@ -6,7 +6,7 @@ import '../datamodel.dart';
 class OrderPage extends StatefulWidget {
   final DataManager dataManager;
 
-  const OrderPage({Key? key, required this.dataManager}) : super(key: key);
+  const OrderPage({super.key, required this.dataManager});
 
   @override
   State<OrderPage> createState() => _OrderPageState();
@@ -42,8 +42,7 @@ class OrderItem extends StatelessWidget {
   final ItemInCart item;
   final Function onRemove;
 
-  const OrderItem({Key? key, required this.item, required this.onRemove})
-      : super(key: key);
+  const OrderItem({super.key, required this.item, required this.onRemove});
 
   @override
   Widget build(BuildContext context) {

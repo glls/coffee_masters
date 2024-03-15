@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class OffersPage extends StatelessWidget {
-  const OffersPage({Key? key}) : super(key: key);
+  const OffersPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +38,10 @@ class Offer extends StatelessWidget {
   final String description;
 
   const Offer({
-    Key? key,
+    super.key,
     required this.title,
     required this.description,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class Offer extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         title,
-                        style: Theme.of(context).textTheme.headline5,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                     ),
                   )),
@@ -83,7 +83,7 @@ class Offer extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         description,
-                        style: Theme.of(context).textTheme.headline6,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ),
                   )),

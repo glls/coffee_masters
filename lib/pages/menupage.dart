@@ -6,7 +6,7 @@ import '../datamodel.dart';
 class MenuPage extends StatelessWidget {
   final DataManager dataManager;
 
-  const MenuPage({Key? key, required this.dataManager}) : super(key: key);
+  const MenuPage({super.key, required this.dataManager});
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +59,7 @@ class ProductItem extends StatelessWidget {
   final Product product;
   final Function onAdd;
 
-  const ProductItem({Key? key, required this.product, required this.onAdd})
-      : super(key: key);
+  const ProductItem({super.key, required this.product, required this.onAdd});
 
   @override
   Widget build(BuildContext context) {
