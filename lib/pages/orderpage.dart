@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../datamanager.dart';
-import '../datamodel.dart';
+import '../data_manager.dart';
+import '../data_model.dart';
 
 class OrderPage extends StatefulWidget {
   final DataManager dataManager;

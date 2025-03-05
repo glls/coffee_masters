@@ -1,7 +1,7 @@
-import 'package:coffee_masters/datamanager.dart';
+import 'package:coffee_masters/data_manager.dart';
 import 'package:flutter/material.dart';
 
-import '../datamodel.dart';
+import '../data_model.dart';
 
 class MenuPage extends StatelessWidget {
   final DataManager dataManager;
@@ -70,7 +70,12 @@ class ProductItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(product.imageUrl),
+            Image.network(
+              product.imageUrl,
+              errorBuilder: (context, error, stackTrace) {
+                return Icon(Icons.error); // Provide a fallback widget on error
+              },
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

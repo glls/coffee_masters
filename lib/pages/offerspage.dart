@@ -8,11 +8,11 @@ class OffersPage extends StatelessWidget {
     return ListView(
       children: const [
         Offer(
-          title: "My great offer",
+          title: "My great offer 1",
           description: "Buy 1 get 10 free!",
         ),
         Offer(
-          title: "My great offer",
+          title: "My great offer 2 ",
           description: "Buy 1 get 10 free!",
         ),
         Offer(

@@ -1,7 +1,7 @@
 import 'package:coffee_masters/pages/offerspage.dart';
 import 'package:flutter/material.dart';
 
-import 'datamanager.dart';
+import 'data_manager.dart';
 import 'pages/menupage.dart';
 import 'pages/orderpage.dart';
 
@@ -16,10 +16,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Coffee Masters',
+      title: 'Coffee Masters Shop',
       theme: ThemeData(
-        primarySwatch: Colors.brown,
-      ),
+          primarySwatch: Colors.brown,
+          primaryColor: Colors.brown,
+          colorScheme: ColorScheme.dark()),
       home: const MyHomePage(),
     );
   }

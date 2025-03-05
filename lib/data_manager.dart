@@ -1,23 +1,29 @@
 import 'dart:convert';
 
-import 'datamodel.dart';
 import 'package:http/http.dart' as http;
+
+import 'data_model.dart';
 
 class DataManager {
   List<Category>? _menu;
   List<ItemInCart> cart = [];
 
   fetchMenu() async {
-    const url = "https://firtman.github.io/coffeemasters/api/menu.json";
-
-    var response = await http.get(Uri.parse(url));
-    if (response.statusCode == 200) {
-      var body = response.body;
-      _menu = [];
-      var decodeData = jsonDecode(body) as List<dynamic>;
-      for (var json in decodeData) {
-        _menu?.add(Category.fromJson(json));
+    const url = "https://dev.d.cyberpunk.gr/api/menu.json";
+    try {
+      var response = await http.get(Uri.parse(url));
+      if (response.statusCode == 200) {
+        var body = response.body;
+        _menu = [];
+        var decodeData = jsonDecode(body) as List<dynamic>;
+        for (var json in decodeData) {
+          _menu?.add(Category.fromJson(json));
+        }
+      } else {
+        print('Failed to load menu: ${response.statusCode}');
       }
+    } catch (e) {
+      print('Error: $e'); // Catch any exceptions and print them
     }
   }
 

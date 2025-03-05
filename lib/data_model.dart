@@ -3,8 +3,8 @@ class Product {
   String name;
   double price;
   String image;
-  String get imageUrl =>
-      "https://firtman.github.io/coffeemasters/api/images/$image";
+
+  String get imageUrl => "https://dev.d.cyberpunk.gr/api/images/$image";
 
   // constructor
   Product({
